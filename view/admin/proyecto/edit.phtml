@@ -1,0 +1,184 @@
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+          
+           
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>CURSO / <i class="fa fa-edit"></i> Editar</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <form class="form-horizontal form-label-left" name="nuevocurso" accept-charset="utf-8" method="post" action="">
+                     
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input  class="form-control col-md-7 col-xs-12" name="CURnombre"  required="required" type="text" value="<?php echo $curdatos[0]["CURnombre"];?>">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fechai">Fecha Inicio <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input class="date-picker form-control col-md-7 col-xs-12" required="required" type="date" name="CURfechaInicio" value="<?php echo $curdatos[0]["CURfechaInicio"];?>">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fechaf">Fecha Fin <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input class="date-picker form-control col-md-7 col-xs-12" required="required" type="date"name="CURfechaFin" value="<?php echo $curdatos[0]["CURfechaFin"];?>">
+                        </div>
+                      </div>
+                         
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Estado <span class="required">*</span>
+                        </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select name="CURestado" class="form-control">
+                            <option <?php if($curdatos[0]["CURestado"]=="A"){echo "selected";} ?> value="A">Activo</option>
+                            <option <?php if($curdatos[0]["CURestado"]=="I"){echo "selected";} ?> value="I">Inactivo</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="textarea" required="required" name="CURdescripcion" class="form-control col-md-7 col-xs-12"><?php echo $curdatos[0]["CURdescripcion"];?></textarea>
+                          <input type="hidden" name="grabar"  value="si"  />
+                          <input type="hidden" name="CURid"  value="<?php echo $curdatos[0]["CURid"];?>"  />
+                        </div>
+                      </div>
+                     
+                        
+                        <?php if(isset($_GET["m"])){
+                            switch($_GET["m"]){
+                               case '1': 
+                                  ?>
+                                    <div style="color: red; align-content: center; font-weight: bolder; text-align: center;"><p> Los datos estan vacios</p></div>
+                                  <?php 
+                              break;
+                              case '2': 
+                                ?>
+                                 <div style="color: green; align-content: center; font-weight: bolder; text-align: center;"><p> Los datos fueron modificados correctamente</p></div>
+                                <?php 
+                              break;                                                      
+                                }
+                            }?>
+                      
+                   
+                      <div class="ln_solid"></div>
+
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <input type="submit" class="btn btn-success" value="Guardar"/>
+                          <a  href="?c=curso&a=curso" class="btn btn-primary">Cancelar</a>
+                         
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+       </div>
+    </div>  
+
+    <!-- jQuery -->
+    <script src="<?php echo Conectar::ruta();?>assets/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<?php echo Conectar::ruta();?>assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="<?php echo Conectar::ruta();?>assets/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="<?php echo Conectar::ruta();?>assets/nprogress/nprogress.js"></script>
+ 
+    <!-- Custom Theme Scripts -->
+    <script src="<?php echo Conectar::ruta();?>build/js/custom.min.js"></script>
+
+    <!-- bootstrap-daterangepicker -->
+    <script src="<?php echo Conectar::ruta();?>js/moment/moment.min.js"></script>
+    <script src="<?php echo Conectar::ruta();?>js/datepicker/daterangepicker.js"></script>
+
+    <!-- validator -->
+    <script>
+      // initialize the validator function
+      validator.message.date = 'not a real date';
+
+      // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
+      $('form')
+        .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+        .on('change', 'select.required', validator.checkField)
+        .on('keypress', 'input[required][pattern]', validator.keypress);
+
+      $('.multi.required').on('keyup blur', 'input', function() {
+        validator.checkField.apply($(this).siblings().last()[0]);
+      });
+
+      $('form').submit(function(e) {
+        e.preventDefault();
+        var submit = true;
+
+        // evaluate the form using generic validaing
+        if (!validator.checkAll($(this))) {
+          submit = false;
+        }
+
+        if (submit)
+          this.submit();
+
+        return false;
+      });
+    </script>
+    <!-- /validator -->
+
+      <!-- bootstrap-daterangepicker -->
+    <script>
+      $(document).ready(function() {
+        $('#birthday').daterangepicker({
+          singleDatePicker: true,
+          calender_style: "picker_4"
+        }, function(start, end, label) {
+          console.log(start.toISOString(), end.toISOString(), label);
+        });
+      });
+    </script>
+    <!-- /bootstrap-daterangepicker -->
+
+     <script>
+      $(document).ready(function() {
+        $('#birthday2').daterangepicker({
+          singleDatePicker: true,
+          calender_style: "picker_4"
+        }, function(start, end, label) {
+          console.log(start.toISOString(), end.toISOString(), label);
+        });
+      });
+    </script>
+    <!-- /bootstrap-daterangepicker -->
+
+  </body>
+</html>
